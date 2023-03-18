@@ -1,0 +1,38 @@
+nav {
+  background: #1e1f25;
+}
+
+ul {
+  display: flex;
+  width: 100%;
+  height: 70px;
+  margin: auto;
+  max-width: 1000px;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+}
+
+a {
+  padding: 1rem 2rem 1.15rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #ebebeb;
+  min-width: 80px;
+  margin: auto;
+  text-decoration: none;
+}
+
+a:hover,
+.active {
+  background-image: url('/button.png');
+  background-size: 100% 100%;
+  color: #27262c;
+  animation: spring 300ms ease-out;
+  text-shadow: 0 -1px 0 #ef816c;
+  font-weight: bold;
+}
+
+li:active {
+  transform: translateY(4px);
+}
