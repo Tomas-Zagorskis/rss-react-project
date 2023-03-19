@@ -2,9 +2,7 @@ import { Component } from 'react';
 
 import classes from './SearchBar.module.css';
 
-type Props = {
-  props1: string;
-};
+type Props = {};
 
 type State = {
   searchInput: string;
