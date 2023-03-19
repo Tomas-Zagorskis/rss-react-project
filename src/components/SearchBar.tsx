@@ -9,34 +9,40 @@ type State = {
 };
 
 export default class SearchBar extends Component<Props, State> {
-  state: State = {
-    searchInput: '',
-  };
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      searchInput: '',
+    };
+  }
 
   componentDidMount() {
-    const search = localStorage.getItem('search');
-    if (search)
+    const searchValue = localStorage.getItem('search');
+    if (searchValue?.trim()) {
       this.setState({
-        searchInput: search,
+        searchInput: searchValue,
       });
+    }
+  }
+
+  componentWillUnmount() {
+    const { searchInput } = this.state;
+    localStorage.setItem('search', searchInput);
   }
 
   updateSearch(text: string) {
     this.setState({ searchInput: text });
-    console.log(text);
-  }
-
-  componentWillUnmount() {
-    localStorage.setItem('search', this.state.searchInput);
   }
 
   render() {
+    const { searchInput } = this.state;
+
     return (
       <div>
         <input
           type="search"
           onChange={(event) => this.updateSearch(event.target.value)}
-          value={this.state.searchInput}
+          value={searchInput}
         />
       </div>
     );
