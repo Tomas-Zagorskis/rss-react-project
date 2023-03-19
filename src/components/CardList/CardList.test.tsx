@@ -1,7 +1,8 @@
 import { test, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import CardList from './CardList';
+
 import { Music } from 'types/types';
+import CardList from './CardList';
 
 const music1: Music = {
   imgUrl: 'https://example.com/album-cover-1.jpg',

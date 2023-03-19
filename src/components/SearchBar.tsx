@@ -2,7 +2,7 @@ import { Component } from 'react';
 
 import classes from './SearchBar.module.css';
 
-type Props = {};
+type Props = object;
 
 type State = {
   searchInput: string;
