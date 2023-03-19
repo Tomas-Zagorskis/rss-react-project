@@ -1,0 +1,33 @@
+.search {
+  width: 100%;
+  text-align: center;
+  margin-block: 2rem;
+  position: relative;
+}
+.search input {
+  width: 300px;
+  padding: 0.5rem 1rem;
+  border-radius: 5rem;
+  border: 1px solid rgb(122, 122, 122);
+  transition: scale 200ms ease-in;
+}
+.search input:is(:hover, :active, :focus) {
+  outline: none;
+  scale: 1.2;
+}
+
+.search span::before {
+  z-index: 2;
+  position: absolute;
+  content: '';
+  background-image: url('../assets/icon_search.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 20px;
+  height: 20px;
+  padding: 0.45rem;
+  transition: scale 200ms ease-in;
+}
+.search span::before:is(:hover, :active, :focus) {
+  background-size: 120%;
+}

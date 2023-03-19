@@ -1,5 +1,7 @@
 import { Component } from 'react';
 
+import classes from './SearchBar.module.css';
+
 type Props = {
   props1: string;
 };
@@ -38,12 +40,14 @@ export default class SearchBar extends Component<Props, State> {
     const { searchInput } = this.state;
 
     return (
-      <div>
-        <input
-          type="search"
-          onChange={(event) => this.updateSearch(event.target.value)}
-          value={searchInput}
-        />
+      <div className={classes.search}>
+        <span>
+          <input
+            type="search"
+            onChange={(event) => this.updateSearch(event.target.value)}
+            value={searchInput}
+          />
+        </span>
       </div>
     );
   }
