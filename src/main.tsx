@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter, Navigate } from 'react-router-dom';
 
 import AboutUs from './routes/AboutUs';
 import NotFound from './routes/NotFound';
@@ -17,7 +17,8 @@ const router = createBrowserRouter([
       { path: '/about-us', element: <AboutUs /> },
     ],
   },
-  { path: '*', element: <NotFound /> },
+  { path: '/404', element: <NotFound /> },
+  { path: '*', element: <Navigate to="/404" /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
