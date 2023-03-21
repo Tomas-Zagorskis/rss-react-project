@@ -1,0 +1,33 @@
+.not-found {
+  background-color: tomato;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10%;
+  padding: 3rem 0;
+}
+
+.not-found h2 {
+  font-family: fantasy;
+  font-size: 3rem;
+  letter-spacing: 5px;
+  word-spacing: 10px;
+  margin-bottom: 3rem;
+}
+
+.btn {
+  padding: 1rem 2rem;
+  background-color: brown;
+  border-radius: 10px;
+  color: antiquewhite;
+  width: 50px;
+  margin: auto;
+  font-size: 1.5rem;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: rgb(142, 35, 35);
+}

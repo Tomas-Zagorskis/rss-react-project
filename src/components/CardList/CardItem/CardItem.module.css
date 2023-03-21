@@ -1,0 +1,22 @@
+.item {
+  width: 300px;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  box-shadow: 5px 5px 5px #ddd;
+  font-family: cursive;
+}
+
+.item img {
+  width: 300px;
+  aspect-ratio: 1/1;
+}
+
+.item h3 {
+  margin-block: 1rem;
+  font-size: 1.4rem;
+}
+
+.item h4 {
+  color: #666;
+}

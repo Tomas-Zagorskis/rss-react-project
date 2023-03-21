@@ -1,0 +1,33 @@
+.search {
+  width: 100%;
+  text-align: center;
+  margin-block: 2rem;
+  position: relative;
+}
+.search input {
+  width: 300px;
+  font-size: 1.1rem;
+
+  padding: 0.5rem 0.4rem 0.5rem 1.8rem;
+  border-radius: 5rem;
+  border: 1px solid rgb(122, 122, 122);
+  transition: scale 200ms ease-in;
+}
+
+.search img {
+  position: absolute;
+  left: calc(50% - 150px);
+  width: 22px;
+  padding: 0.45rem;
+  transition: all 200ms ease-in;
+}
+
+.search input:is(:hover, :active, :focus) + img {
+  scale: 1.2;
+  left: calc(50% - 178px);
+}
+
+.search input:is(:hover, :active, :focus) {
+  outline: none;
+  scale: 1.2;
+}
