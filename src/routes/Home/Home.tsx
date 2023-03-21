@@ -1,6 +1,6 @@
 import { Music } from 'types/types';
-import CardList from '../components/CardList/CardList';
-import SearchBar from '../components/SearchBar';
+import CardList from '../../components/CardList/CardList';
+import SearchBar from '../../components/SearchBar/SearchBar';
 
 const musicList: Music[] = [
   {

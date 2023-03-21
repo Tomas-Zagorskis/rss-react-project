@@ -16,6 +16,7 @@ describe('SearchBar', () => {
     const searchInput = screen.getByRole('searchbox');
     await userEvent.type(searchInput, 'test search');
     expect(localStorage.getItem('search')).toBe(null);
+
     // Unmount the component to trigger `componentWillUnmount`
     unmount();
     expect(localStorage.getItem('search')).toBe('test search');
