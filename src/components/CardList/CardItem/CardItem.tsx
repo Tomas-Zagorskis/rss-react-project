@@ -8,9 +8,15 @@ export default function CardItem({ music }: Props) {
     <li className={classes.item}>
       <img src={music.imgUrl} alt="album cover" />
       <h3>
-        {music.title} ({music.year})
+        {music.title} ({music.releaseDate})
       </h3>
-      <h4>Artist: {music.artist}</h4>
+      <h4>
+        {music.artistType}: {music.artistName}
+      </h4>
+      {Object.entries(music.musicGenres).map(([key, value]) => {
+        if (value) return <p key={key}>{key}</p>;
+      })}
+      <p>{music.country}</p>
     </li>
   );
 }
