@@ -1,0 +1,19 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-block: 3rem;
+  width: 80%;
+  max-width: 800px;
+}
+.form label {
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form input:not([type='radio'], [type='checkbox'], [type='date']),
+.form select {
+  padding: 0.5rem 1rem;
+  width: 100%;
+}
