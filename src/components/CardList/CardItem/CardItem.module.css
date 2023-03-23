@@ -22,3 +22,10 @@
 .item h4 {
   color: #666;
 }
+
+.genres {
+  display: flex;
+  justify-content: left;
+  gap: 1rem;
+  color: #999;
+}

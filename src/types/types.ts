@@ -10,7 +10,11 @@ export type Music = {
     pop: boolean;
     country: boolean;
     hipHop: boolean;
+    metal: boolean;
+    rap: boolean;
+    jazz: boolean;
+    "R'n'B": boolean;
   };
   country: string;
-  releaseDate: string;
+  releaseDate: Date;
 };

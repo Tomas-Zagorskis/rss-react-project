@@ -13,6 +13,14 @@ export default function Header() {
         </li>
         <li>
           <NavLink
+            to="/music-form"
+            className={({ isActive }) => (isActive ? classes.active : undefined)}
+          >
+            Music Form
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
             to="/about-us"
             className={({ isActive }) => (isActive ? classes.active : undefined)}
           >
