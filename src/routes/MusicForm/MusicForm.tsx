@@ -82,94 +82,132 @@ export default class MusicForm extends React.Component<object, { music: Music[] 
   }
 
   render() {
+    // Object.keys(this.musicGenresRef).map(genre => (
+    //   <label>
+    //             <input
+    //               type="checkbox"
+    //               name="musicGenres"
+    //               value={genre}
+    //               ref={this.musicGenresRef}
+    //             />
+    //             {genre}
+    //           </label>
+    // ))
+
     return (
       <>
         <form onSubmit={this.handleSubmit} className={classes.form}>
-          <div>
+          <div className={classes['form-group']}>
             <label htmlFor="title">Title: </label>
             <input type="text" name="title" ref={this.albumCoverRef} id="title" />
           </div>
-          <div>
-            <label htmlFor="artistBand">Artist or Band:</label>
-            <div>
-              <input
-                type="radio"
-                id="artist"
-                name="artistOrBandRef"
-                value="artist"
-                ref={this.artistOrBandRef}
-              />
-              <label htmlFor="artist">Artist</label>
-              <input
-                type="radio"
-                id="band"
-                name="artistType"
-                value="band"
-                ref={this.artistOrBandRef}
-              />
-              <label htmlFor="band">Band</label>
+          <div className={classes['form-group']}>
+            <p>Artist or Band:</p>
+            <div className={classes.type}>
+              <label htmlFor="artist">
+                Artist
+                <input
+                  type="radio"
+                  id="artist"
+                  name="artistOrBandRef"
+                  value="artist"
+                  ref={this.artistOrBandRef}
+                />
+              </label>
+              <label htmlFor="band">
+                Band
+                <input
+                  type="radio"
+                  id="band"
+                  name="artistOrBandRef"
+                  value="band"
+                  ref={this.artistOrBandRef}
+                />
+              </label>
             </div>
           </div>
-          <div>
-            <label htmlFor="author">Artist/Band Name:</label>
+          <div className={classes['form-group']}>
+            <label htmlFor="author">Singer:</label>
             <input type="text" id="author" name="artistName" ref={this.artistBandNameRef} />
           </div>
-          <div>
-            <label htmlFor="genres">Music Genres:</label>
-            <div>
+          <div className={classes.controls}>
+            <div className={classes.control}>
+              <label htmlFor="country">Country:</label>
+              <select name="country" id="country" ref={this.countryRef}>
+                <option value="">Select a country</option>
+                <option value="USA">USA</option>
+                <option value="UK">UK</option>
+                <option value="Germany">Germany</option>
+              </select>
+            </div>
+            <div className={classes.control}>
+              <label htmlFor="date">Release Date:</label>
+              <input type="date" id="date" name="releaseDate" ref={this.releaseYearRef} />
+            </div>
+            <div className={classes.control}>
+              <label htmlFor="imgUrl" className={classes.upload}>
+                Upload Image:
+              </label>
               <input
-                type="checkbox"
-                name="musicGenres"
-                value="rock"
-                ref={this.musicGenresRef.rock}
+                type="file"
+                name="imgUrl"
+                id="imgUrl"
+                accept="image/*"
+                ref={this.coverImageRef}
               />
-              Rock
-              <input type="checkbox" name="musicGenres" value="pop" ref={this.musicGenresRef.pop} />
-              Pop
-              <input
-                type="checkbox"
-                name="musicGenres"
-                value="country"
-                ref={this.musicGenresRef.country}
-              />
-              Country
-              <input
-                type="checkbox"
-                name="musicGenres"
-                value="electronic"
-                ref={this.musicGenresRef.electronic}
-              />
-              Electronic
-              <input
-                type="checkbox"
-                name="musicGenres"
-                value="hipHop"
-                ref={this.musicGenresRef.hipHop}
-              />
-              Hip Hop
             </div>
           </div>
-          <br />
-          <label>
-            Cover Image:
-            <input type="file" name="imgUrl" accept="image/*" ref={this.coverImageRef} />
-          </label>
-          <br />
-          <label>
-            Country:
-            <select name="country" ref={this.countryRef}>
-              <option value="">Select a country</option>
-              <option value="USA">USA</option>
-              <option value="UK">UK</option>
-              <option value="Germany">Germany</option>
-            </select>
-          </label>
-          <br />
-          <label>
-            Release Year:
-            <input type="date" name="releaseDate" ref={this.releaseYearRef} />
-          </label>
-          <br />
+          <div className={classes['form-group']}>
+            <label htmlFor="genres">Music Genres:</label>
+            <div className={classes.genres}>
+              <label>
+                <input
+                  type="checkbox"
+                  name="musicGenres"
+                  value="rock"
+                  ref={this.musicGenresRef.rock}
+                />
+                Rock
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  name="musicGenres"
+                  value="pop"
+                  ref={this.musicGenresRef.pop}
+                />
+                Pop
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  name="musicGenres"
+                  value="country"
+                  ref={this.musicGenresRef.country}
+                />
+                Country
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  name="musicGenres"
+                  value="electronic"
+                  ref={this.musicGenresRef.electronic}
+                />
+                Electronic
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  name="musicGenres"
+                  value="hipHop"
+                  ref={this.musicGenresRef.hipHop}
+                />
+                Hip Hop
+              </label>
+            </div>
+          </div>
+
           <input type="submit" value="Submit" />
         </form>
 

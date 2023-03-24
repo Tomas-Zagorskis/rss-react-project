@@ -4,16 +4,91 @@
   margin: auto;
   margin-block: 3rem;
   width: 80%;
+  gap: 2rem;
   max-width: 800px;
 }
-.form label {
-  font-size: 1.5rem;
+
+.form-group {
   display: flex;
-  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
 }
 
-.form input:not([type='radio'], [type='checkbox'], [type='date']),
-.form select {
+.form input[type='text'] {
   padding: 0.5rem 1rem;
   width: 100%;
+  border: none;
+  border-bottom: 1px solid #999;
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+  display: none;
+}
+
+.form label {
+  display: inline-block;
+  width: max-content;
+}
+
+label:has(input[type='checkbox'], input[type='radio']) {
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+  user-select: none;
+  width: max-content;
+}
+
+label:has(input:checked) {
+  background-color: #fe876f;
+  border-radius: 10px;
+}
+.genres,
+.type {
+  padding: 0.5rem;
+  background-color: #eeeeee;
+  border-radius: 10px;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.form input[type='date'],
+.form select {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-bottom: 1px solid #999;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form input[type='file'] {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.upload {
+  border-bottom: 1px solid #999;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.form input[type='submit'] {
+  width: fit-content;
+  margin: auto;
+  margin-top: 2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background-color: rgb(125, 222, 125);
+  font-size: 1.1rem;
+  font-weight: 700;
 }
