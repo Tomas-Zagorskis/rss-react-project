@@ -1,6 +1,6 @@
 export type Music = {
   title: string;
-  artistName: string;
+  singerName: string;
   artistType: string;
   imgUrl: string;
   id: string | null;
@@ -12,7 +12,7 @@ export type Music = {
     hipHop: boolean;
     metal: boolean;
     rap: boolean;
-    jazz: boolean;
+    other: boolean;
   };
   country: string;
   releaseDate: Date;

@@ -7,7 +7,7 @@ const musicList: Music[] = [
     imgUrl:
       'https://www.udiscovermusic.com/wp-content/uploads/2017/08/Elvis-Presley-Album-Cover-820x820.jpg',
     title: 'Elvis Presley',
-    artistName: 'Elvis Presley',
+    singerName: 'Elvis Presley',
     artistType: 'artist',
     musicGenres: {
       rock: true,
@@ -17,7 +17,7 @@ const musicList: Music[] = [
       hipHop: false,
       metal: false,
       rap: false,
-      jazz: false,
+      other: false,
     },
     country: 'USA',
     releaseDate: new Date('1956'),
@@ -27,7 +27,7 @@ const musicList: Music[] = [
     imgUrl:
       'https://www.udiscovermusic.com/wp-content/uploads/2017/08/Beatles-Sgt-Pepper-Cover-820x820.jpg',
     title: 'Sgt Pepper’s Lonely Hearts Club Band',
-    artistName: 'The Beatles',
+    singerName: 'The Beatles',
     artistType: 'band',
     musicGenres: {
       rock: true,
@@ -37,7 +37,7 @@ const musicList: Music[] = [
       hipHop: false,
       metal: false,
       rap: false,
-      jazz: false,
+      other: false,
     },
     country: 'UK',
     releaseDate: new Date('1967'),
@@ -47,7 +47,7 @@ const musicList: Music[] = [
     imgUrl:
       'https://www.udiscovermusic.com/wp-content/uploads/2017/08/Pink-Floyd-Dark-Side-Of-The-Moon-820x820.jpg',
     title: 'The Dark Side Of The Moon',
-    artistName: 'Pink Floyd',
+    singerName: 'Pink Floyd',
     artistType: 'band',
     musicGenres: {
       rock: true,
@@ -57,7 +57,7 @@ const musicList: Music[] = [
       hipHop: false,
       metal: false,
       rap: false,
-      jazz: false,
+      other: false,
     },
     country: 'USA',
     releaseDate: new Date('1973'),

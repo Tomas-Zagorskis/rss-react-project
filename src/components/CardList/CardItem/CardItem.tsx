@@ -18,7 +18,7 @@ export default function CardItem({ music }: Props) {
       </p>
       <br />
       <h4>
-        {music.artistType}: {music.artistName}
+        {music.artistType}: {music.singerName}
       </h4>
       <br />
       <p>Country: {music.country}</p>
