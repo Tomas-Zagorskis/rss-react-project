@@ -48,17 +48,14 @@ export default class Form extends React.Component<Props, { valid: boolean }> {
   handleSubmit(event: FormEvent) {
     event.preventDefault();
 
-    const title = this.titleRef.current!.value;
-    let isValid = this.requiredValidity(this.titleRef.current!);
-    if (!isValid) return;
-
-    const artistType = this.artistRef.current!.value;
-    const bandType = this.bandRef.current!.value;
-
-    const singerName = this.nameRef.current!.value;
-    isValid = this.requiredValidity(this.nameRef.current!);
-    if (!isValid) return;
-
+    let title = this.titleRef.current!.value;
+    let artistType = this.artistRef.current!.value;
+    let bandType = this.bandRef.current!.value;
+    let singerName = this.nameRef.current!.value;
+    const file = this.imageRef.current!.files![0];
+    let imgUrl = file ? URL.createObjectURL(file) : 'default-cover.jpg';
+    let country = this.countryRef.current!.value;
+    let releaseDate = new Date(this.releaseDateRef.current!.value);
     const musicGenres = {
       rock: this.musicGenresRef.rock.current!.checked,
       pop: this.musicGenresRef.pop.current!.checked,
@@ -70,16 +67,11 @@ export default class Form extends React.Component<Props, { valid: boolean }> {
       other: this.musicGenresRef.other.current!.checked,
     };
 
-    const file = this.imageRef.current!.files![0];
-    const imgUrl = file ? URL.createObjectURL(file) : 'default-cover.jpg';
-
-    const country = this.countryRef.current!.value;
-    isValid = this.requiredValidity(this.countryRef.current!);
-    if (!isValid) return;
-
-    const releaseDate = new Date(this.releaseDateRef.current!.value);
-    isValid = this.requiredValidity(this.releaseDateRef.current!);
-    if (!isValid) return;
+    const isTitleValid = this.requiredValidity(this.titleRef.current!);
+    const isNameValid = this.requiredValidity(this.nameRef.current!);
+    const isCountryValid = this.requiredValidity(this.countryRef.current!);
+    const isDateValid = this.requiredValidity(this.releaseDateRef.current!);
+    if (!isTitleValid && !isNameValid && !isCountryValid && !isDateValid) return;
 
     const formData: Music = {
       title,
@@ -93,6 +85,22 @@ export default class Form extends React.Component<Props, { valid: boolean }> {
     };
 
     this.props.onSubmit(formData);
+
+    title = '';
+    artistType = '';
+    bandType = '';
+    singerName = '';
+    imgUrl = '';
+    country = '';
+    releaseDate = new Date();
+    musicGenres.rock = false;
+    musicGenres.pop = false;
+    musicGenres.hipHop = false;
+    musicGenres.electronic = false;
+    musicGenres.country = false;
+    musicGenres.metal = false;
+    musicGenres.rap = false;
+    musicGenres.other = false;
   }
 
   render() {
