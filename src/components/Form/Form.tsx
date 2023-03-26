@@ -74,20 +74,21 @@ export default class Form extends React.Component<Props, { valid: boolean }> {
     const isNameValid = this.requiredValidity(this.nameRef.current!);
     const isCountryValid = this.requiredValidity(this.countryRef.current!);
     const isDateValid = this.requiredValidity(this.releaseDateRef.current!);
-    if (!isTitleValid && !isNameValid && !isCountryValid && !isDateValid) return;
+    if (isTitleValid && isNameValid && isCountryValid && isDateValid) {
+      const formData: Music = {
+        title,
+        singerName,
+        type,
+        imgUrl,
+        id: crypto.randomUUID(),
+        musicGenres,
+        country,
+        releaseDate,
+      };
 
-    const formData: Music = {
-      title,
-      singerName,
-      type,
-      imgUrl,
-      id: crypto.randomUUID(),
-      musicGenres,
-      country,
-      releaseDate,
-    };
-
-    this.props.onSubmit(formData);
+      this.props.onSubmit(formData);
+    }
+    return;
   }
 
   render() {
@@ -132,8 +133,8 @@ export default class Form extends React.Component<Props, { valid: boolean }> {
           <p className={classes.invalid}>{this.nameRef.current?.validationMessage}</p>
           <div className={classes.controls}>
             <div className={classes.control}>
-              <label htmlFor="country">Country*:</label>
-              <select name="country" id="country" ref={this.countryRef}>
+              <label htmlFor="ofCountry">Country*:</label>
+              <select name="country" id="ofCountry" ref={this.countryRef}>
                 <option value="">Select a country</option>
                 <option value="USA">USA</option>
                 <option value="UK">UK</option>

@@ -1,4 +1,4 @@
-import { ForwardedRef, forwardRef, RefObject } from 'react';
+import { ForwardedRef, forwardRef } from 'react';
 
 type Props = {
   id: string;

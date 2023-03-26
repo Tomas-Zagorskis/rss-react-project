@@ -5,19 +5,49 @@ import { Music } from 'types/types';
 import CardList from './CardList';
 
 const music1: Music = {
-  imgUrl: 'https://example.com/album-cover-1.jpg',
-  title: 'Example Album 1',
-  artist: 'Example Artist 1',
-  year: 2022,
+  imgUrl: 'default-cover1.jpg',
+  title: 'Example Album',
+  singerName: 'Example Artist',
+  releaseDate: new Date('2005/05/10'),
   id: '1234',
+  type: {
+    artist: true,
+    band: false,
+  },
+  musicGenres: {
+    rock: true,
+    electronic: false,
+    pop: false,
+    country: false,
+    hipHop: false,
+    metal: false,
+    rap: false,
+    other: false,
+  },
+  country: 'USA',
 };
 
 const music2: Music = {
-  imgUrl: 'https://example.com/album-cover-2.jpg',
-  title: 'Example Album 2',
-  artist: 'Example Artist 2',
-  year: 2023,
-  id: '5678',
+  imgUrl: 'default-cover2.jpg',
+  title: 'Example Album',
+  singerName: 'Example Artist',
+  releaseDate: new Date('2005/05/10'),
+  id: '1234',
+  type: {
+    artist: true,
+    band: false,
+  },
+  musicGenres: {
+    rock: true,
+    electronic: false,
+    pop: false,
+    country: false,
+    hipHop: false,
+    metal: false,
+    rap: false,
+    other: false,
+  },
+  country: 'USA',
 };
 
 const cards = [music1, music2];

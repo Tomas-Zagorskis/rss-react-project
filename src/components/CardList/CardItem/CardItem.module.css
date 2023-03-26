@@ -28,4 +28,5 @@
   justify-content: left;
   gap: 1rem;
   color: #999;
+  flex-wrap: wrap;
 }

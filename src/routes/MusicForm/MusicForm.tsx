@@ -9,7 +9,6 @@ export default class MusicForm extends React.Component<object, { music: Music[] 
     this.state = {
       music: [],
     };
-
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -23,7 +22,6 @@ export default class MusicForm extends React.Component<object, { music: Music[] 
     return (
       <>
         <Form onSubmit={this.handleSubmit} />
-
         {this.state.music.length === 0 ? null : <CardList cards={this.state.music} />}
       </>
     );
