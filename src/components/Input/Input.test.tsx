@@ -11,7 +11,7 @@ test('InputNested component', async () => {
       type="checkbox"
       title="Test Input"
       name="test-input"
-      defaultChecked={true}
+      defaultChecked
       ref={ref}
     />
   );

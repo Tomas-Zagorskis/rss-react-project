@@ -11,19 +11,17 @@ type Props = {
 
 const InputNested = forwardRef((props: Props, ref: ForwardedRef<HTMLInputElement>) => {
   return (
-    <>
-      <label htmlFor={props.id}>
-        {props.title}
-        <input
-          type={props.type}
-          id={props.id}
-          name={props.name}
-          value={props.value}
-          ref={ref}
-          defaultChecked={props.defaultChecked}
-        />
-      </label>
-    </>
+    <label htmlFor={props.id}>
+      {props.title}
+      <input
+        type={props.type}
+        id={props.id}
+        name={props.name}
+        value={props.value}
+        ref={ref}
+        defaultChecked={props.defaultChecked}
+      />
+    </label>
   );
 });
 

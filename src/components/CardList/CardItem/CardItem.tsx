@@ -14,6 +14,7 @@ export default function CardItem({ music }: Props) {
       <p className={classes.genres}>
         {Object.entries(music.musicGenres).map(([key, value]) => {
           if (value) return <span key={key}>{key} </span>;
+          return null;
         })}
       </p>
       <br />

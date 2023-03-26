@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { test, suite, vi } from 'vitest';
 import Form from './Form';
 
@@ -13,6 +13,7 @@ suite('Form Component', () => {
   });
 
   test('renders the form correctly', () => {
+    // eslint-disable-next-line react/jsx-props-no-spreading
     render(<Form {...defaultProps} />);
 
     expect(screen.getByLabelText(/title/i)).toBeInTheDocument();
