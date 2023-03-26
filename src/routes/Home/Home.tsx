@@ -8,7 +8,10 @@ const musicList: Music[] = [
       'https://www.udiscovermusic.com/wp-content/uploads/2017/08/Elvis-Presley-Album-Cover-820x820.jpg',
     title: 'Elvis Presley',
     singerName: 'Elvis Presley',
-    artistType: 'artist',
+    type: {
+      artist: true,
+      band: false,
+    },
     musicGenres: {
       rock: true,
       electronic: false,
@@ -28,7 +31,10 @@ const musicList: Music[] = [
       'https://www.udiscovermusic.com/wp-content/uploads/2017/08/Beatles-Sgt-Pepper-Cover-820x820.jpg',
     title: 'Sgt Pepper’s Lonely Hearts Club Band',
     singerName: 'The Beatles',
-    artistType: 'band',
+    type: {
+      artist: false,
+      band: true,
+    },
     musicGenres: {
       rock: true,
       electronic: false,
@@ -48,7 +54,10 @@ const musicList: Music[] = [
       'https://www.udiscovermusic.com/wp-content/uploads/2017/08/Pink-Floyd-Dark-Side-Of-The-Moon-820x820.jpg',
     title: 'The Dark Side Of The Moon',
     singerName: 'Pink Floyd',
-    artistType: 'band',
+    type: {
+      artist: false,
+      band: true,
+    },
     musicGenres: {
       rock: true,
       electronic: false,

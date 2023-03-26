@@ -1,7 +1,10 @@
 export type Music = {
   title: string;
   singerName: string;
-  artistType: string;
+  type: {
+    artist: boolean;
+    band: boolean;
+  };
   imgUrl: string;
   id: string | null;
   musicGenres: {

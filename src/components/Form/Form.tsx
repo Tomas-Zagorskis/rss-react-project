@@ -1,6 +1,7 @@
-import React, { BaseSyntheticEvent, FormEvent } from 'react';
+import React, { FormEvent } from 'react';
 import { Music } from 'types/types';
 import classes from './Form.module.css';
+import { InputNested, InputSibling } from '../Input/Input';
 
 type Props = {
   onSubmit: (data: Music) => void;
@@ -49,8 +50,10 @@ export default class Form extends React.Component<Props, { valid: boolean }> {
     event.preventDefault();
 
     let title = this.titleRef.current!.value;
-    let artistType = this.artistRef.current!.value;
-    let bandType = this.bandRef.current!.value;
+    let type = {
+      artist: this.artistRef.current!.checked,
+      band: this.bandRef.current!.checked,
+    };
     let singerName = this.nameRef.current!.value;
     const file = this.imageRef.current!.files![0];
     let imgUrl = file ? URL.createObjectURL(file) : 'default-cover.jpg';
@@ -76,7 +79,7 @@ export default class Form extends React.Component<Props, { valid: boolean }> {
     const formData: Music = {
       title,
       singerName,
-      artistType,
+      type,
       imgUrl,
       id: crypto.randomUUID(),
       musicGenres,
@@ -85,22 +88,6 @@ export default class Form extends React.Component<Props, { valid: boolean }> {
     };
 
     this.props.onSubmit(formData);
-
-    title = '';
-    artistType = '';
-    bandType = '';
-    singerName = '';
-    imgUrl = '';
-    country = '';
-    releaseDate = new Date();
-    musicGenres.rock = false;
-    musicGenres.pop = false;
-    musicGenres.hipHop = false;
-    musicGenres.electronic = false;
-    musicGenres.country = false;
-    musicGenres.metal = false;
-    musicGenres.rap = false;
-    musicGenres.other = false;
   }
 
   render() {
@@ -108,33 +95,39 @@ export default class Form extends React.Component<Props, { valid: boolean }> {
       <>
         <form className={classes.form}>
           <div className={classes['form-group']}>
-            <label htmlFor="title">Title*: </label>
-            <input type="text" name="title" ref={this.titleRef} id="title" />
+            <InputSibling type="text" id="title" name="title" title="Title*:" ref={this.titleRef} />
           </div>
           <p className={classes.invalid}>{this.titleRef.current?.validationMessage}</p>
           <div className={classes['form-group']}>
             <p>Artist or Band:</p>
             <div className={classes.type}>
-              <label htmlFor="artist">
-                Artist
-                <input
-                  type="radio"
-                  id="artist"
-                  name="typeRef"
-                  value="artist"
-                  ref={this.artistRef}
-                  defaultChecked
-                />
-              </label>
-              <label htmlFor="band">
-                Band
-                <input type="radio" id="band" name="typeRef" value="band" ref={this.bandRef} />
-              </label>
+              <InputNested
+                type="radio"
+                id="artist"
+                value="artist"
+                name="typeRef"
+                title="Artist"
+                ref={this.artistRef}
+                defaultChecked={true}
+              />
+              <InputNested
+                type="radio"
+                id="band"
+                value="band"
+                name="typeRef"
+                title="Band"
+                ref={this.bandRef}
+              />
             </div>
           </div>
           <div className={classes['form-group']}>
-            <label htmlFor="author">Singer*:</label>
-            <input type="text" id="author" name="artistName" ref={this.nameRef} />
+            <InputSibling
+              id="author"
+              type="text"
+              name="artistName"
+              ref={this.nameRef}
+              title="Singer*:"
+            />
           </div>
           <p className={classes.invalid}>{this.nameRef.current?.validationMessage}</p>
           <div className={classes.controls}>
@@ -149,8 +142,13 @@ export default class Form extends React.Component<Props, { valid: boolean }> {
               <p className={classes.invalid}>{this.countryRef.current?.validationMessage}</p>
             </div>
             <div className={classes.control}>
-              <label htmlFor="date">Release Date*:</label>
-              <input type="date" id="date" name="releaseDate" ref={this.releaseDateRef} />
+              <InputSibling
+                id="date"
+                type="date"
+                name="releaseDate"
+                title="Release Date*:"
+                ref={this.releaseDateRef}
+              />
               <p className={classes.invalid}>{this.releaseDateRef.current?.validationMessage}</p>
             </div>
             <div className={classes.control}>
@@ -163,79 +161,71 @@ export default class Form extends React.Component<Props, { valid: boolean }> {
           <div className={classes['form-group']}>
             <label htmlFor="genres">Music Genres:</label>
             <div className={classes.genres}>
-              <label>
-                <input
-                  type="checkbox"
-                  name="musicGenres"
-                  value="rock"
-                  ref={this.musicGenresRef.rock}
-                />
-                Rock
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="musicGenres"
-                  value="pop"
-                  ref={this.musicGenresRef.pop}
-                />
-                Pop
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="musicGenres"
-                  value="country"
-                  ref={this.musicGenresRef.country}
-                />
-                Country
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="musicGenres"
-                  value="electronic"
-                  ref={this.musicGenresRef.electronic}
-                />
-                Electronic
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="musicGenres"
-                  value="hipHop"
-                  ref={this.musicGenresRef.hipHop}
-                />
-                Hip Hop
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="musicGenres"
-                  value="metal"
-                  ref={this.musicGenresRef.metal}
-                />
-                Metal
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="musicGenres"
-                  value="rap"
-                  ref={this.musicGenresRef.rap}
-                />
-                Rap
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="musicGenres"
-                  value="other"
-                  defaultChecked
-                  ref={this.musicGenresRef.other}
-                />
-                Other
-              </label>
+              <InputNested
+                id="rock"
+                type="checkbox"
+                name="musicGenres"
+                value="rock"
+                title="Rock"
+                ref={this.musicGenresRef.rock}
+              />
+              <InputNested
+                id="pop"
+                type="checkbox"
+                name="musicGenres"
+                value="pop"
+                title="Pop"
+                ref={this.musicGenresRef.pop}
+              />
+              <InputNested
+                id="country"
+                type="checkbox"
+                name="musicGenres"
+                value="country"
+                title="Country"
+                ref={this.musicGenresRef.country}
+              />
+              <InputNested
+                id="electronic"
+                type="checkbox"
+                name="musicGenres"
+                value="electronic"
+                title="Electronic"
+                ref={this.musicGenresRef.electronic}
+              />
+              <InputNested
+                id="hipHop"
+                type="checkbox"
+                name="musicGenres"
+                value="hipHop"
+                title="HipHop"
+                ref={this.musicGenresRef.hipHop}
+              />
+              <InputNested
+                id="metal"
+                type="checkbox"
+                name="musicGenres"
+                value="metal"
+                title="Metal"
+                ref={this.musicGenresRef.metal}
+              />
+              <InputNested
+                id="rap"
+                type="checkbox"
+                name="musicGenres"
+                value="rap"
+                title="Rap"
+                ref={this.musicGenresRef.rap}
+              />
+              <InputNested
+                id="other"
+                type="checkbox"
+                name="musicGenres"
+                value="other"
+                title="Other"
+                defaultChecked={true}
+                ref={this.musicGenresRef.other}
+              />
             </div>
           </div>
 
