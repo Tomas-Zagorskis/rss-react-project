@@ -10,6 +10,8 @@
 .item img {
   width: 300px;
   aspect-ratio: 1/1;
+  object-fit: cover;
+  image-rendering: smooth;
 }
 
 .item h3 {
@@ -19,4 +21,12 @@
 
 .item h4 {
   color: #666;
+}
+
+.genres {
+  display: flex;
+  justify-content: left;
+  gap: 1rem;
+  color: #999;
+  flex-wrap: wrap;
 }

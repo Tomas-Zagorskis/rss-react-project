@@ -3,11 +3,26 @@ import { render, screen } from '@testing-library/react';
 import CardItem from './CardItem';
 
 const music = {
-  imgUrl: 'https://example.com/album-cover.jpg',
+  imgUrl: 'default-cover.jpg',
   title: 'Example Album',
-  artist: 'Example Artist',
-  year: 2022,
+  singerName: 'Example Artist',
+  releaseDate: new Date('2005/05/10'),
   id: '1234',
+  type: {
+    artist: true,
+    band: false,
+  },
+  musicGenres: {
+    rock: true,
+    electronic: false,
+    pop: false,
+    country: false,
+    hipHop: false,
+    metal: false,
+    rap: false,
+    other: false,
+  },
+  country: 'USA',
 };
 
 test('CardItem component', async () => {
@@ -15,9 +30,9 @@ test('CardItem component', async () => {
   const image = screen.getByAltText('album cover');
   const title = screen.getByText(/Example Album/i);
   const artist = screen.getByText(/Artist: Example Artist/i);
-  const year = screen.getByText(/2022/i);
+  const year = screen.getByText(/2005/i);
 
-  expect(image).toHaveAttribute('src', 'https://example.com/album-cover.jpg');
+  expect(image).toHaveAttribute('src', 'default-cover.jpg');
   expect(title).toBeInTheDocument();
   expect(artist).toBeInTheDocument();
   expect(year).toBeInTheDocument();

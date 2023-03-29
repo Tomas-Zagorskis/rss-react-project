@@ -44,7 +44,9 @@
     "@typescript-eslint/no-var-reqiures": "off",
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
-    "import/no-extraneous-dependencies": "off"
+    "import/no-extraneous-dependencies": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "react/require-default-props": "off"
   },
   "settings": {
     "react": {

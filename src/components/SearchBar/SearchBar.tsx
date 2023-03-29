@@ -34,6 +34,7 @@ export default class SearchBar extends Component<Props, State> {
           type="search"
           onChange={(event) => this.updateSearch(event.target.value)}
           value={searchInput}
+          placeholder="Search"
         />
         <img src="icon_search.svg" alt="search" />
       </div>
