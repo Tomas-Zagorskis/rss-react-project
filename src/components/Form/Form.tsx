@@ -8,14 +8,12 @@ type Props = {
 };
 
 export default class Form extends React.Component<Props, { valid: boolean }> {
+  private formRef = React.createRef<HTMLFormElement>();
+
   private titleRef = React.createRef<HTMLInputElement>();
-
   private artistRef = React.createRef<HTMLInputElement>();
-
   private bandRef = React.createRef<HTMLInputElement>();
-
   private nameRef = React.createRef<HTMLInputElement>();
-
   private musicGenresRef = {
     rock: React.createRef<HTMLInputElement>(),
     pop: React.createRef<HTMLInputElement>(),
@@ -26,11 +24,8 @@ export default class Form extends React.Component<Props, { valid: boolean }> {
     rap: React.createRef<HTMLInputElement>(),
     other: React.createRef<HTMLInputElement>(),
   };
-
   private imageRef = React.createRef<HTMLInputElement>();
-
   private countryRef = React.createRef<HTMLSelectElement>();
-
   private releaseDateRef = React.createRef<HTMLInputElement>();
 
   constructor(props: Props) {
@@ -83,6 +78,8 @@ export default class Form extends React.Component<Props, { valid: boolean }> {
       };
       const { onSubmit } = this.props;
       onSubmit(formData);
+
+      this.formRef.current?.reset();
     }
   }
 
@@ -100,7 +97,7 @@ export default class Form extends React.Component<Props, { valid: boolean }> {
   render() {
     const { valid } = this.state;
     return (
-      <form className={classes.form}>
+      <form className={classes.form} ref={this.formRef}>
         <div className={classes['form-group']}>
           <InputSibling type="text" id="title" name="title" title="Title*:" ref={this.titleRef} />
         </div>
