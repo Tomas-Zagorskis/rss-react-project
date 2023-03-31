@@ -8,3 +8,11 @@ a {
   text-decoration: none;
   color: inherit;
 }
+#root *[aria-invalid='true'] {
+  border: 1px solid red;
+}
+
+#root input:focus-visible,
+#root select:focus-visible {
+  outline: none;
+}
