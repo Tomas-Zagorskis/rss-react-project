@@ -1,44 +1,64 @@
-import { ForwardedRef, forwardRef } from 'react';
+import { forwardRef } from 'react';
+import { Path, UseFormRegister } from 'react-hook-form';
+import { Music } from '../../types/types';
 
 type Props = {
-  id: string;
-  value?: string;
-  type: string;
-  title: string;
-  name: string;
+  type?: string;
+  name: Path<Music>;
+  label: string;
   defaultChecked?: boolean;
+  register: UseFormRegister<Music>;
+  required: boolean;
+  ariaInvalid?: boolean;
+  value?: string;
+};
+type RadioProps = {
+  name: Path<Music>;
+  labels: string[];
+  defaultChecked?: boolean;
+  register: UseFormRegister<Music>;
+  required: boolean;
+  ariaInvalid?: boolean;
+  values: string[];
 };
 
-const InputNested = forwardRef((props: Props, ref: ForwardedRef<HTMLInputElement>) => {
-  return (
-    <label htmlFor={props.id}>
-      {props.title}
-      <input
-        type={props.type}
-        id={props.id}
-        name={props.name}
-        value={props.value}
-        ref={ref}
-        defaultChecked={props.defaultChecked}
-      />
-    </label>
-  );
-});
-
-const InputSibling = forwardRef((props: Props, ref: ForwardedRef<HTMLInputElement>) => {
+const CommonInput = ({ type, name, label, register, required, ariaInvalid }: Props) => {
   return (
     <>
-      <label htmlFor={props.id}>{props.title}</label>
-      <input
-        type={props.type}
-        id={props.id}
-        name={props.name}
-        value={props.value}
-        ref={ref}
-        defaultChecked={props.defaultChecked}
-      />
+      <label htmlFor={name}>{label}</label>
+      <input type={type} id={name} {...register(name, { required })} aria-invalid={ariaInvalid} />
+    </>
+  );
+};
+
+const RadioInputs = ({ register, name, required, values, labels }: RadioProps) => {
+  const renderInputs = values.map((value, index) => (
+    <label key={value}>
+      {labels[index]}
+      <input type="radio" value={value} {...register(name, { required })} />
+    </label>
+  ));
+  return <>{renderInputs}</>;
+};
+
+const SelectInputs = forwardRef<
+  HTMLSelectElement,
+  { label: string; values: string[]; ariaInvalid: boolean } & ReturnType<UseFormRegister<Music>>
+>(({ onChange, onBlur, name, label, values, ariaInvalid }, ref) => {
+  const renderOptions = values.map((value) => (
+    <option value={value} key={value}>
+      {value}
+    </option>
+  ));
+  return (
+    <>
+      <label>{label}</label>
+      <select name={name} ref={ref} onChange={onChange} onBlur={onBlur} aria-invalid={ariaInvalid}>
+        <option value="">Select a country</option>
+        {renderOptions}
+      </select>
     </>
   );
 });
 
-export { InputNested, InputSibling };
+export { CommonInput, SelectInputs, RadioInputs };
