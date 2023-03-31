@@ -1,0 +1,28 @@
+.popup-exit,
+.popup-exit-done,
+.popup-exit-active,
+.popup-enter,
+.popup-enter-done,
+.popup-enter-active {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: fit-content;
+  opacity: 0;
+  transition: opacity 300ms ease;
+  padding: 1rem;
+  background-color: green;
+  color: white;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  box-shadow: 0 0 20px grey;
+}
+.popup-enter-done,
+.popup-enter-active {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
