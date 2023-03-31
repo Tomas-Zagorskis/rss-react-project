@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { BaseSyntheticEvent, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { Music, genres } from '../../types/types';
@@ -19,14 +19,12 @@ const Form: React.FC<Props> = ({ onSubmit }) => {
   } = useForm<Music>({
     mode: 'onChange',
   });
+  const [imgPath, setImgPath] = useState<string>('default-cover.jpg');
 
   const handleForm: SubmitHandler<Music> = (formData) => {
-    let imgPath = 'default-cover.jpg';
-    if (formData.imgFile) {
-      imgPath = URL.createObjectURL(formData.imgFile[0]);
-    }
     onSubmit({ ...formData, imgUrl: imgPath, id: crypto.randomUUID() });
-    // reset();
+    reset();
+    setImgPath('default-cover.jpg');
   };
 
   const musicGenresList = Object.values(genres).map((value) => (
@@ -35,6 +33,12 @@ const Form: React.FC<Props> = ({ onSubmit }) => {
       <input type="checkbox" value={value} {...register('musicGenres', { required: true })} />
     </label>
   ));
+
+  const handleImgFile = (event: BaseSyntheticEvent) => {
+    const file = event.currentTarget.files[0];
+    if (file) setImgPath(URL.createObjectURL(file));
+    if (!file) setImgPath('default-cover.jpg');
+  };
 
   return (
     <form className={classes.form} onSubmit={handleSubmit(handleForm)}>
@@ -100,13 +104,18 @@ const Form: React.FC<Props> = ({ onSubmit }) => {
         </div>
         <div className={classes.control}>
           <label htmlFor="imgFile" className={classes.upload} aria-invalid={!!errors.imgFile}>
-            Upload Image:
+            <img src={imgPath} alt="cover" height="25px" /> Upload Image:
           </label>
           <input
             type="file"
             id="imgFile"
             accept="image/*"
-            {...register('imgFile', { required: true })}
+            {...register('imgFile', {
+              required: true,
+              onChange(event) {
+                handleImgFile(event);
+              },
+            })}
           />
           <InvalidText error={!!errors.imgFile} msg="Image is required" />
         </div>
