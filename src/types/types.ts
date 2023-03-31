@@ -2,18 +2,21 @@ export type Music = {
   title: string;
   singerName: string;
   type: 'artist' | 'band';
-  imgUrl: string;
+  imgUrl?: string;
+  imgFile?: FileList;
   id: string | null;
-  musicGenres: {
-    rock: boolean;
-    electronic: boolean;
-    pop: boolean;
-    country: boolean;
-    hipHop: boolean;
-    metal: boolean;
-    rap: boolean;
-    other: boolean;
-  };
+  musicGenres: string[];
   country: string;
   releaseDate: Date;
 };
+
+export enum genres {
+  rock = 'Rock',
+  electronic = 'Electronic',
+  pop = 'Pop',
+  country = 'Country',
+  hipHop = 'HipHop',
+  metal = 'Metal',
+  rap = 'Rap',
+  other = 'Other',
+}

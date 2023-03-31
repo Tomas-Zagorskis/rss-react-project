@@ -1,4 +1,4 @@
-import { Music } from 'types/types';
+import { Music, genres } from './types/types';
 
 export const musicData: Music[] = [
   {
@@ -7,16 +7,7 @@ export const musicData: Music[] = [
     title: 'Elvis Presley',
     singerName: 'Elvis Presley',
     type: 'artist',
-    musicGenres: {
-      rock: true,
-      electronic: false,
-      pop: true,
-      country: false,
-      hipHop: false,
-      metal: false,
-      rap: false,
-      other: false,
-    },
+    musicGenres: [genres.rock, genres.pop],
     country: 'USA',
     releaseDate: new Date('1956'),
     id: 'm1',
@@ -27,16 +18,7 @@ export const musicData: Music[] = [
     title: 'Sgt Pepper’s Lonely Hearts Club Band',
     singerName: 'The Beatles',
     type: 'band',
-    musicGenres: {
-      rock: true,
-      electronic: false,
-      pop: true,
-      country: false,
-      hipHop: false,
-      metal: false,
-      rap: false,
-      other: false,
-    },
+    musicGenres: [genres.rock, genres.pop],
     country: 'UK',
     releaseDate: new Date('1967'),
     id: 'm2',
@@ -47,16 +29,7 @@ export const musicData: Music[] = [
     title: 'The Dark Side Of The Moon',
     singerName: 'Pink Floyd',
     type: 'band',
-    musicGenres: {
-      rock: true,
-      electronic: false,
-      pop: false,
-      country: false,
-      hipHop: false,
-      metal: false,
-      rap: false,
-      other: false,
-    },
+    musicGenres: [genres.rock],
     country: 'USA',
     releaseDate: new Date('1973'),
     id: 'm3',
