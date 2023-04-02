@@ -1,9 +1,10 @@
-import { Music, types } from 'types/types';
+import { FC } from 'react';
+import { Music, Types } from 'types/types';
 import classes from './CardItem.module.css';
 
 type Props = { music: Music };
 
-export default function CardItem({ music }: Props) {
+const CardItem: FC<Props> = ({ music }) => {
   return (
     <li className={classes.item}>
       <img src={music.imgUrl} alt="album cover" />
@@ -18,11 +19,13 @@ export default function CardItem({ music }: Props) {
       </p>
       <br />
       <h4>
-        {music.type === types.artist ? types.artist : types.band}: {music.singerName}
+        {music.type === Types.artist ? Types.artist : Types.band}: {music.singerName}
       </h4>
       <br />
       <p>Country: {music.country}</p>
       <br />
     </li>
   );
-}
+};
+
+export default CardItem;

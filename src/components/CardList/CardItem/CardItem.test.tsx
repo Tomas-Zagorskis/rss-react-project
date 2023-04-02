@@ -1,7 +1,7 @@
 import { test, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
+import { Genres, Types } from 'types/types';
 import CardItem from './CardItem';
-import { genres, types } from 'types/types';
 
 const music = {
   imgUrl: 'default-cover.jpg',
@@ -9,8 +9,8 @@ const music = {
   singerName: 'Example Artist',
   releaseDate: new Date('2005/05/10'),
   id: '1234',
-  type: types.artist,
-  musicGenres: [genres.rock],
+  type: Types.artist,
+  musicGenres: [Genres.rock],
   country: 'USA',
 };
 

@@ -1,8 +1,9 @@
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
 import classes from './NotFound.module.css';
 
-export default function NotFound() {
+const NotFound: FC = () => {
   return (
     <article className={classes['not-found']}>
       <h2>
@@ -14,4 +15,6 @@ export default function NotFound() {
       </Link>
     </article>
   );
-}
+};
+
+export default NotFound;

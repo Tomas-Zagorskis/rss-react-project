@@ -2,9 +2,7 @@ import { FC, useEffect, useState } from 'react';
 
 import classes from './SearchBar.module.css';
 
-type Props = object;
-
-const SearchBar: FC<Props> = (props) => {
+const SearchBar: FC = () => {
   const [search, setSearch] = useState<string>(localStorage.getItem('search')?.trim() || '');
 
   useEffect(() => {

@@ -1,8 +1,9 @@
+import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import classes from './Header.module.css';
 
-export default function Header() {
+const Header: FC = () => {
   return (
     <nav className={classes.nav}>
       <ul>
@@ -30,4 +31,6 @@ export default function Header() {
       </ul>
     </nav>
   );
-}
+};
+
+export default Header;

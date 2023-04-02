@@ -1,12 +1,12 @@
-import { render, act } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { describe, it, vi } from 'vitest';
-import MusicForm from './MusicForm';
 import userEvent from '@testing-library/user-event';
+import MusicForm from './MusicForm';
 
 describe('MusicForm', () => {
   global.URL.createObjectURL = vi.fn();
   it('should add a new music and display it', async () => {
-    const { getByLabelText, getByText, getAllByText } = render(<MusicForm />);
+    const { getByLabelText, getByText } = render(<MusicForm />);
     const titleInput = getByLabelText('Title*:');
     const typeInput = getByLabelText('Artist');
     const singerNameInput = getByLabelText('Singer*:');

@@ -38,6 +38,7 @@ const RadioInputs = ({ register, name, required, values, labels }: RadioProps) =
       <input type="radio" value={value} {...register(name, { required })} />
     </label>
   ));
+  // eslint-disable-next-line react/jsx-no-useless-fragment
   return <>{renderInputs}</>;
 };
 
@@ -51,21 +52,13 @@ const SelectInputs = forwardRef<
     </option>
   ));
   return (
-    <>
-      <label>
-        {label}
-        <select
-          name={name}
-          ref={ref}
-          onChange={onChange}
-          onBlur={onBlur}
-          aria-invalid={ariaInvalid}
-        >
-          <option value="">Select a country</option>
-          {renderOptions}
-        </select>
-      </label>
-    </>
+    <label>
+      {label}
+      <select name={name} ref={ref} onChange={onChange} onBlur={onBlur} aria-invalid={ariaInvalid}>
+        <option value="">Select a country</option>
+        {renderOptions}
+      </select>
+    </label>
   );
 });
 

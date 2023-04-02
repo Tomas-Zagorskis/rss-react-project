@@ -10,7 +10,7 @@ test('CommonInput renders correctly', () => {
       name="type"
       label="Artist"
       register={registerMock}
-      required={true}
+      required
       ariaInvalid={false}
     />
   );
@@ -29,7 +29,7 @@ test('RadioInputs renders correctly', () => {
       labels={['Rock', 'Pop', 'Jazz']}
       values={['rock', 'pop', 'jazz']}
       register={registerMock}
-      required={true}
+      required
       ariaInvalid={false}
     />
   );

@@ -1,10 +1,10 @@
 import React, { BaseSyntheticEvent, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { Music, genres } from 'types/types';
-import classes from './Form.module.css';
 import { CommonInput, RadioInputs, SelectInputs } from 'components/Input/Input';
 import InvalidText from 'components/InvalidText/InvalidText';
+import { Music, Genres } from 'types/types';
+import classes from './Form.module.css';
 
 type Props = {
   onSubmit: (data: Music) => void;
@@ -27,7 +27,7 @@ const Form: React.FC<Props> = ({ onSubmit }) => {
     setImgPath('default-cover.jpg');
   };
 
-  const musicGenresList = Object.values(genres).map((value) => (
+  const musicGenresList = Object.values(Genres).map((value) => (
     <label key={value}>
       {value}
       <input type="checkbox" value={value} {...register('musicGenres', { required: true })} />
@@ -60,7 +60,7 @@ const Form: React.FC<Props> = ({ onSubmit }) => {
         <div className={classes.type} aria-invalid={!!errors.type}>
           <RadioInputs
             register={register}
-            required={true}
+            required
             name="type"
             values={['Artist', 'Band']}
             labels={['Artist', 'Band']}
