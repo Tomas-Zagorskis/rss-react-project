@@ -1,7 +1,7 @@
 import { test, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
-import { Music } from 'types/types';
+import { genres, Music, types } from 'types/types';
 import CardList from './CardList';
 
 const music1: Music = {
@@ -10,20 +10,8 @@ const music1: Music = {
   singerName: 'Example Artist',
   releaseDate: new Date('2005/05/10'),
   id: '1234',
-  type: {
-    artist: true,
-    band: false,
-  },
-  musicGenres: {
-    rock: true,
-    electronic: false,
-    pop: false,
-    country: false,
-    hipHop: false,
-    metal: false,
-    rap: false,
-    other: false,
-  },
+  type: types.artist,
+  musicGenres: [genres.rock],
   country: 'USA',
 };
 
@@ -32,21 +20,9 @@ const music2: Music = {
   title: 'Example Album',
   singerName: 'Example Artist',
   releaseDate: new Date('2005/05/10'),
-  id: '1234',
-  type: {
-    artist: true,
-    band: false,
-  },
-  musicGenres: {
-    rock: true,
-    electronic: false,
-    pop: false,
-    country: false,
-    hipHop: false,
-    metal: false,
-    rap: false,
-    other: false,
-  },
+  id: '5678',
+  type: types.artist,
+  musicGenres: [genres.rock],
   country: 'USA',
 };
 

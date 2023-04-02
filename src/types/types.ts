@@ -1,7 +1,7 @@
 export type Music = {
   title: string;
   singerName: string;
-  type: 'artist' | 'band';
+  type: types;
   imgUrl?: string;
   imgFile?: FileList;
   id: string | null;
@@ -14,9 +14,13 @@ export enum genres {
   rock = 'Rock',
   electronic = 'Electronic',
   pop = 'Pop',
-  country = 'Country',
+  jazz = 'Jazz',
   hipHop = 'HipHop',
   metal = 'Metal',
   rap = 'Rap',
   other = 'Other',
+}
+export enum types {
+  artist = 'Artist',
+  band = 'Band',
 }

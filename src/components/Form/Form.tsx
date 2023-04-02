@@ -1,10 +1,10 @@
 import React, { BaseSyntheticEvent, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { Music, genres } from '../../types/types';
+import { Music, genres } from 'types/types';
 import classes from './Form.module.css';
-import { CommonInput, RadioInputs, SelectInputs } from '../Input/Input';
-import InvalidText from '../../components/InvalidText/InvalidText';
+import { CommonInput, RadioInputs, SelectInputs } from 'components/Input/Input';
+import InvalidText from 'components/InvalidText/InvalidText';
 
 type Props = {
   onSubmit: (data: Music) => void;
@@ -35,7 +35,7 @@ const Form: React.FC<Props> = ({ onSubmit }) => {
   ));
 
   const handleImgFile = (event: BaseSyntheticEvent) => {
-    const file = event.currentTarget.files[0];
+    const file: MediaSource | null = event.currentTarget.files[0];
     if (file) setImgPath(URL.createObjectURL(file));
     if (!file) setImgPath('default-cover.jpg');
   };
@@ -62,7 +62,7 @@ const Form: React.FC<Props> = ({ onSubmit }) => {
             register={register}
             required={true}
             name="type"
-            values={['artist', 'band']}
+            values={['Artist', 'Band']}
             labels={['Artist', 'Band']}
           />
         </div>
@@ -122,7 +122,7 @@ const Form: React.FC<Props> = ({ onSubmit }) => {
       </div>
       <div>
         <div className={classes['form-group']}>
-          <label htmlFor="genres">Music Genres:</label>
+          <label>Music Genres:</label>
           <div className={classes.genres} aria-invalid={!!errors.musicGenres}>
             {musicGenresList}
           </div>

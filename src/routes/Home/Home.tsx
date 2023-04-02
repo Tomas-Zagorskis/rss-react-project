@@ -1,8 +1,8 @@
-import { musicData } from '../../musicData';
+import { musicData } from 'musicData';
 import { useState } from 'react';
 import { Music } from 'types/types';
-import CardList from '../../components/CardList/CardList';
-import SearchBar from '../../components/SearchBar/SearchBar';
+import CardList from 'components/CardList/CardList';
+import SearchBar from 'components/SearchBar/SearchBar';
 
 function Home() {
   const [musicList, setMusicList] = useState<Music[]>(musicData);

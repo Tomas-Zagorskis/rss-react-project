@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import { Path, UseFormRegister } from 'react-hook-form';
-import { Music } from '../../types/types';
+import { Music } from 'types/types';
 
 type Props = {
   type?: string;
@@ -52,11 +52,19 @@ const SelectInputs = forwardRef<
   ));
   return (
     <>
-      <label>{label}</label>
-      <select name={name} ref={ref} onChange={onChange} onBlur={onBlur} aria-invalid={ariaInvalid}>
-        <option value="">Select a country</option>
-        {renderOptions}
-      </select>
+      <label>
+        {label}
+        <select
+          name={name}
+          ref={ref}
+          onChange={onChange}
+          onBlur={onBlur}
+          aria-invalid={ariaInvalid}
+        >
+          <option value="">Select a country</option>
+          {renderOptions}
+        </select>
+      </label>
     </>
   );
 });
