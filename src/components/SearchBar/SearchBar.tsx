@@ -1,43 +1,34 @@
-import { Component } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 
 import classes from './SearchBar.module.css';
 
-type Props = object;
+const SearchBar: FC = () => {
+  const [search, setSearch] = useState<string>(localStorage.getItem('search')?.trim() || '');
+  const searchRef = useRef<string>(search);
 
-type State = {
-  searchInput: string;
+  useEffect(() => {
+    searchRef.current = search;
+  }, [search]);
+
+  useEffect(() => {
+    return () => localStorage.setItem('search', searchRef.current);
+  }, []);
+
+  const updateSearch = (text: string) => {
+    setSearch(text);
+  };
+
+  return (
+    <div className={classes.search}>
+      <input
+        type="search"
+        onChange={(event) => updateSearch(event.target.value)}
+        value={search}
+        placeholder="Search"
+      />
+      <img src="icon_search.svg" alt="search" />
+    </div>
+  );
 };
 
-export default class SearchBar extends Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      searchInput: localStorage.getItem('search')?.trim() || '',
-    };
-  }
-
-  componentWillUnmount() {
-    const { searchInput } = this.state;
-    localStorage.setItem('search', searchInput);
-  }
-
-  updateSearch(text: string) {
-    this.setState({ searchInput: text });
-  }
-
-  render() {
-    const { searchInput } = this.state;
-
-    return (
-      <div className={classes.search}>
-        <input
-          type="search"
-          onChange={(event) => this.updateSearch(event.target.value)}
-          value={searchInput}
-          placeholder="Search"
-        />
-        <img src="icon_search.svg" alt="search" />
-      </div>
-    );
-  }
-}
+export default SearchBar;

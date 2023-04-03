@@ -8,3 +8,16 @@ a {
   text-decoration: none;
   color: inherit;
 }
+#root *[aria-invalid='false'] {
+  border-bottom: 2px solid #999;
+  transition: border 500ms ease;
+}
+#root *[aria-invalid='true'] {
+  transition: border 500ms ease;
+  border-bottom: 2px solid red;
+}
+
+#root input:focus-visible,
+#root select:focus-visible {
+  outline: none;
+}

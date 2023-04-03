@@ -1,5 +1,6 @@
 import { test, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
+import { Genres, Types } from 'types/types';
 import CardItem from './CardItem';
 
 const music = {
@@ -8,20 +9,8 @@ const music = {
   singerName: 'Example Artist',
   releaseDate: new Date('2005/05/10'),
   id: '1234',
-  type: {
-    artist: true,
-    band: false,
-  },
-  musicGenres: {
-    rock: true,
-    electronic: false,
-    pop: false,
-    country: false,
-    hipHop: false,
-    metal: false,
-    rap: false,
-    other: false,
-  },
+  type: Types.artist,
+  musicGenres: [Genres.rock],
   country: 'USA',
 };
 

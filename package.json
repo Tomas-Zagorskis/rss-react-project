@@ -21,9 +21,12 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "@types/react-transition-group": "^4.4.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.9.0"
+    "react-hook-form": "^7.43.8",
+    "react-router-dom": "^6.9.0",
+    "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
     "@testing-library/dom": "^9.0.1",
@@ -45,13 +48,14 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.28.0",
-    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "husky": "^8.0.3",
     "jsdom": "^21.1.1",
     "lint-staged": "^13.2.0",
     "prettier": "^2.8.4",
     "typescript": "^4.9.3",
     "vite": "^4.1.0",
+    "vite-tsconfig-paths": "^4.0.7",
     "vitest": "^0.29.3"
   }
 }

@@ -1,30 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Music } from 'types/types';
-import CardList from '../../components/CardList/CardList';
-import Form from '../../components/Form/Form';
+import CardList from 'components/CardList/CardList';
+import Form from 'components/Form/Form';
+import PopUp from 'components/UI/PopUp/PopUp';
 
-export default class MusicForm extends React.Component<object, { music: Music[] }> {
-  constructor(props: object) {
-    super(props);
-    this.state = {
-      music: [],
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
+const MusicForm: React.FC = () => {
+  const [musicList, setMusicList] = useState<Music[]>([]);
+  const [success, setSuccess] = useState<boolean>(false);
+
+  if (success) {
+    setTimeout(() => setSuccess(false), 2000);
   }
 
-  handleSubmit(formData: Music) {
-    this.setState((prevState) => ({
-      music: [...prevState.music, formData],
-    }));
-  }
+  const handleSubmit = (formData: Music) => {
+    setMusicList((prevState) => [...prevState, formData]);
+    setSuccess(true);
+  };
 
-  render() {
-    const { music } = this.state;
-    return (
-      <>
-        <Form onSubmit={this.handleSubmit} />
-        {music.length === 0 ? null : <CardList cards={music} />}
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <Form onSubmit={handleSubmit} />
+      <PopUp msg="Form successfully submitted!" display={success} />
+      {musicList.length === 0 ? null : <CardList cards={musicList} />}
+    </>
+  );
+};
+
+export default MusicForm;

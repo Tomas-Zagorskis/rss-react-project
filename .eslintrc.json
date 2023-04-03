@@ -46,7 +46,9 @@
     "react/react-in-jsx-scope": "off",
     "import/no-extraneous-dependencies": "off",
     "jsx-a11y/label-has-associated-control": "off",
-    "react/require-default-props": "off"
+    "react/require-default-props": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/function-component-definition": [2, { "namedComponents": "arrow-function" }]
   },
   "settings": {
     "react": {

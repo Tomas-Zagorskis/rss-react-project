@@ -1,6 +1,7 @@
+import { FC } from 'react';
 import classes from './AboutUs.module.css';
 
-export default function AboutUs() {
+const AboutUs: FC = () => {
   return (
     <article className={classes.about}>
       <h1>About Us</h1>
@@ -20,4 +21,6 @@ export default function AboutUs() {
       </div>
     </article>
   );
-}
+};
+
+export default AboutUs;

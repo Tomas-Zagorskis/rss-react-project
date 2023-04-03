@@ -1,0 +1,16 @@
+.invalid {
+  font-size: 0.8rem;
+  color: red;
+  margin-top: 0.3rem;
+  text-align: center;
+  animation: opacity 500ms ease;
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

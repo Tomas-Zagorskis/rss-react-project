@@ -92,8 +92,3 @@ label:has(input:checked) {
   font-size: 1.1rem;
   font-weight: 700;
 }
-
-.invalid {
-  font-size: 0.8rem;
-  color: red;
-}
