@@ -1,14 +1,18 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 
 import classes from './SearchBar.module.css';
 
 const SearchBar: FC = () => {
   const [search, setSearch] = useState<string>(localStorage.getItem('search')?.trim() || '');
+  const searchRef = useRef<string>(search);
 
   useEffect(() => {
-    localStorage.setItem('search', search);
-    return () => {};
+    searchRef.current = search;
   }, [search]);
+
+  useEffect(() => {
+    return () => localStorage.setItem('search', searchRef.current);
+  }, []);
 
   const updateSearch = (text: string) => {
     setSearch(text);
