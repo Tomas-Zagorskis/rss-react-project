@@ -1,0 +1,36 @@
+.item {
+  width: 300px;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  box-shadow: 5px 5px 5px #ddd;
+  font-family: cursive;
+  display: grid;
+  cursor: pointer;
+}
+
+.item img {
+  width: 300px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+.item h3 {
+  margin-block: 1rem;
+  font-size: 1.4rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #999;
+}
+
+.description {
+  font-weight: bold;
+  color: #666;
+}
+
+.date {
+  color: #999;
+}
+
+.likes {
+  align-self: end;
+}
