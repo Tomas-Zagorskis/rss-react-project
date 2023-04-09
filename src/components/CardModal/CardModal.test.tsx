@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import CardModal from './CardModal';
-import { Basic } from 'unsplash-js/dist/methods/photos/types';
 import { vi } from 'vitest';
+import { Basic } from 'unsplash-js/dist/methods/photos/types';
+import CardModal from './CardModal';
 
 describe('CardModal component', () => {
   const mockItem = {
@@ -25,7 +25,7 @@ describe('CardModal component', () => {
 
   it('should render the component without errors', () => {
     render(<CardModal item={mockItem} onClose={mockOnClose} />);
-    const imgElement = screen.getByAltText('photo');
+    const imgElement = screen.getByAltText('');
     const titleElement = screen.getByText('John Doe');
     const descriptionElement = screen.getByText('A photo of a mountain');
     const likesElement = screen.getByText('10');
@@ -38,7 +38,7 @@ describe('CardModal component', () => {
 
   it('should call the onClose function when the modal is closed', () => {
     render(<CardModal item={mockItem} onClose={mockOnClose} />);
-    const backdropElement = screen.getByTestId('backdrop');
+    const backdropElement = screen.getByRole('main');
     fireEvent.click(backdropElement);
 
     expect(mockOnClose).toHaveBeenCalled();

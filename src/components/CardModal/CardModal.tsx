@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import classes from './CardModal.module.css';
 import { Basic } from 'unsplash-js/dist/methods/photos/types';
+import classes from './CardModal.module.css';
 
 type Props = {
   item: Basic;
@@ -13,12 +13,12 @@ const CardModal: FC<Props> = ({ item, onClose }) => {
   };
   return (
     <>
-      <div className={classes.backdrop} data-testid="backdrop" onClick={handleCloseModal}></div>
+      <main className={classes.backdrop} onClick={handleCloseModal} role="main" />
       <section className={classes.modal}>
-        <div onClick={handleCloseModal} className={classes.close}>
+        <button type="button" onClick={handleCloseModal} className={classes.close}>
           X
-        </div>
-        <img src={item.urls.small} alt="photo" />
+        </button>
+        <img src={item.urls.small} alt="" />
         <article>
           <div className={classes.likes}>
             <p>
@@ -27,7 +27,7 @@ const CardModal: FC<Props> = ({ item, onClose }) => {
             <p className={classes.date}>{new Date(item.created_at).toLocaleDateString('en-GB')}</p>
           </div>
           <h3 className={classes.title}>{item.user.name}</h3>
-          {!!item.description ? (
+          {item.description ? (
             <p className={classes.description}>{item.description}</p>
           ) : (
             <p className={classes.description}>{item.alt_description}</p>

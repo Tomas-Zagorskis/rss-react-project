@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
-import classes from './PhotoItem.module.css';
 import { Basic } from 'unsplash-js/dist/methods/photos/types';
 import CardModal from 'components/CardModal/CardModal';
+import classes from './PhotoItem.module.css';
 
 type Props = { item: Basic };
 

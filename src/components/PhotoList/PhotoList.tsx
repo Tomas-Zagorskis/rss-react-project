@@ -1,9 +1,9 @@
 import { FC, useEffect, useState } from 'react';
 import { ApiResponse } from 'unsplash-js/dist/helpers/response';
 import { Photos } from 'unsplash-js/dist/methods/search/types/response';
-import classes from './PhotoList.module.css';
+import api from 'api/api';
 import PhotoItem from './PhotoItem/PhotoItem';
-import { api } from 'api/api';
+import classes from './PhotoList.module.css';
 
 type Props = {
   query: string;
@@ -18,7 +18,7 @@ const PhotoList: FC<Props> = ({ query }) => {
     setLoading(true);
     api.search
       .getPhotos({
-        query: query,
+        query,
         page: 1,
         perPage: 10,
       })
