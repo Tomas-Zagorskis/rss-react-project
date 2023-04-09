@@ -13,7 +13,7 @@ const CardModal: FC<Props> = ({ item, onClose }) => {
   };
   return (
     <>
-      <div className={classes.backdrop} onClick={handleCloseModal}></div>
+      <div className={classes.backdrop} data-testid="backdrop" onClick={handleCloseModal}></div>
       <section className={classes.modal}>
         <div onClick={handleCloseModal} className={classes.close}>
           X
