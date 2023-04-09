@@ -27,7 +27,11 @@ const CardModal: FC<Props> = ({ item, onClose }) => {
             <p className={classes.date}>{new Date(item.created_at).toLocaleDateString('en-GB')}</p>
           </div>
           <h3 className={classes.title}>{item.user.name}</h3>
-          {!!item.description && <p className={classes.description}>{item.description}</p>}
+          {!!item.description ? (
+            <p className={classes.description}>{item.description}</p>
+          ) : (
+            <p className={classes.description}>{item.alt_description}</p>
+          )}
         </article>
       </section>
     </>
