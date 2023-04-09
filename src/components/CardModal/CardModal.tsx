@@ -18,7 +18,17 @@ const CardModal: FC<Props> = ({ item, onClose }) => {
         <div onClick={handleCloseModal} className={classes.close}>
           X
         </div>
-        <img src={item.urls.full} alt="photo" />
+        <img src={item.urls.small} alt="photo" />
+        <article>
+          <div className={classes.likes}>
+            <p>
+              🧡<span>{item.likes}</span>
+            </p>
+            <p className={classes.date}>{new Date(item.created_at).toLocaleDateString('en-GB')}</p>
+          </div>
+          <h3 className={classes.title}>{item.user.name}</h3>
+          {!!item.description && <p className={classes.description}>{item.description}</p>}
+        </article>
       </section>
     </>
   );
