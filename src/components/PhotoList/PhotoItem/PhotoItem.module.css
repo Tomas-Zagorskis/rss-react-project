@@ -1,0 +1,32 @@
+.item {
+  width: 300px;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  box-shadow: 5px 5px 5px #ddd;
+  font-family: cursive;
+  display: grid;
+  cursor: pointer;
+}
+
+.item img {
+  width: 300px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+.item div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date {
+  color: #999;
+}
+
+.likes {
+  align-self: end;
+}
+.likes span {
+  font-size: 0.8rem;
+  font-family: Verdana, sans-serif;
+}

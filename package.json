@@ -26,7 +26,8 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.8",
     "react-router-dom": "^6.9.0",
-    "react-transition-group": "^4.4.5"
+    "react-transition-group": "^4.4.5",
+    "unsplash-js": "^7.0.15"
   },
   "devDependencies": {
     "@testing-library/dom": "^9.0.1",

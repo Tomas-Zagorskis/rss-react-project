@@ -1,16 +1,14 @@
 import { FC, useState } from 'react';
-import musicData from 'musicData';
-import { Music } from 'types/types';
-import CardList from 'components/CardList/CardList';
 import SearchBar from 'components/SearchBar/SearchBar';
+import PhotoList from 'components/PhotoList/PhotoList';
 
 const Home: FC = () => {
-  const [musicList] = useState<Music[]>(musicData);
+  const [query, setQuery] = useState<string>(localStorage.getItem('search')?.trim() || 'music');
 
   return (
     <div>
-      <SearchBar />
-      <CardList cards={musicList} />
+      <SearchBar handleSearchValue={setQuery} />
+      <PhotoList query={query} />
     </div>
   );
 };

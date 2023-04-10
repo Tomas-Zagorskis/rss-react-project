@@ -1,0 +1,72 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: grid;
+  place-content: center;
+}
+
+.modal {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  height: 700px;
+  background-color: white;
+  border-radius: 40px;
+  padding: 1rem;
+  top: 10%;
+}
+.modal img {
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 40px;
+}
+
+.modal article {
+  width: 95%;
+}
+.close {
+  display: grid;
+  place-content: center;
+  position: absolute;
+  right: 20px;
+  width: 30px;
+  height: 30px;
+  background-color: rgb(137, 137, 137);
+  border: none;
+  border-radius: 50%;
+  color: red;
+  font-weight: bold;
+  text-shadow: 0 0 5px black;
+  font-family: cursive;
+  cursor: pointer;
+  box-shadow: 0 0 10px 2px black;
+  font-size: 1.3rem;
+}
+
+.close:hover {
+  background-color: rgb(98, 98, 98);
+}
+
+.likes {
+  display: flex;
+  justify-content: space-between;
+  font-family: Verdana, sans-serif;
+  margin-top: 0.5rem;
+  color: grey;
+}
+
+.title {
+  margin-top: 0.5rem;
+  font-size: 2rem;
+  border-bottom: 1px solid grey;
+  padding-bottom: 0.5rem;
+}
+
+.description {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}

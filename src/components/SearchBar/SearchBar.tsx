@@ -2,7 +2,11 @@ import { FC, useEffect, useRef, useState } from 'react';
 
 import classes from './SearchBar.module.css';
 
-const SearchBar: FC = () => {
+type Props = {
+  handleSearchValue: (search: string) => void;
+};
+
+const SearchBar: FC<Props> = ({ handleSearchValue }) => {
   const [search, setSearch] = useState<string>(localStorage.getItem('search')?.trim() || '');
   const searchRef = useRef<string>(search);
 
@@ -18,11 +22,16 @@ const SearchBar: FC = () => {
     setSearch(text);
   };
 
+  const handleKeyDown = (code: string) => {
+    if (code === 'Enter' || code === 'NumpadEnter') handleSearchValue(search);
+  };
+
   return (
     <div className={classes.search}>
       <input
         type="search"
         onChange={(event) => updateSearch(event.target.value)}
+        onKeyDown={(event) => handleKeyDown(event.code)}
         value={search}
         placeholder="Search"
       />
