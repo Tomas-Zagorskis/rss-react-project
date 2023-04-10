@@ -23,7 +23,6 @@ const SearchBar: FC<Props> = ({ handleSearchValue }) => {
   };
 
   const handleKeyDown = (code: string) => {
-    console.log(code);
     if (code === 'Enter' || code === 'NumpadEnter') handleSearchValue(search);
   };
 
