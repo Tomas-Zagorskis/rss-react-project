@@ -3,7 +3,7 @@ import SearchBar from 'components/SearchBar/SearchBar';
 import PhotoList from 'components/PhotoList/PhotoList';
 
 const Home: FC = () => {
-  const [query, setQuery] = useState<string>(localStorage.getItem('search')?.trim() || 'cat');
+  const [query, setQuery] = useState<string>(localStorage.getItem('search')?.trim() || 'music');
 
   return (
     <div>

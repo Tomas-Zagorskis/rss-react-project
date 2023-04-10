@@ -4,7 +4,7 @@ import SearchBar from './SearchBar';
 
 describe('SearchBar', () => {
   it('should update search input on change', async () => {
-    render(<SearchBar />);
+    render(<SearchBar handleSearchValue={() => {}} />);
     const searchInput = screen.getByRole('searchbox');
     await userEvent.type(searchInput, 'test search');
     expect(searchInput).toHaveValue('test search');
@@ -12,7 +12,7 @@ describe('SearchBar', () => {
 
   it('should save search input to local storage', async () => {
     localStorage.clear();
-    const { unmount } = render(<SearchBar />);
+    const { unmount } = render(<SearchBar handleSearchValue={() => {}} />);
     const searchInput = screen.getByRole('searchbox');
     await userEvent.type(searchInput, 'test search');
 
@@ -22,7 +22,7 @@ describe('SearchBar', () => {
 
   it('should load saved search input from local storage', () => {
     localStorage.setItem('search', 'saved search');
-    render(<SearchBar />);
+    render(<SearchBar handleSearchValue={() => {}} />);
     expect(screen.getByRole('searchbox')).toHaveValue('saved search');
     localStorage.clear();
   });
