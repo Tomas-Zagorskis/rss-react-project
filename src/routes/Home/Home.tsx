@@ -4,10 +4,10 @@ import PhotoList from 'components/PhotoList/PhotoList';
 
 const Home: FC = () => {
   return (
-    <div>
+    <>
       <SearchBar />
       <PhotoList />
-    </div>
+    </>
   );
 };
 

@@ -1,38 +1,57 @@
-import { test, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
-
-import { Genres, Music, Types } from 'types/types';
+import configureStore from 'redux-mock-store';
+import { Provider } from 'react-redux';
+import { Genres, Types } from 'types/types';
 import CardList from './CardList';
 
-const music1: Music = {
-  imgUrl: 'default-cover1.jpg',
-  title: 'Example Album',
-  singerName: 'Example Artist',
-  releaseDate: new Date('2005/05/10'),
-  id: '1234',
-  type: Types.artist,
-  musicGenres: [Genres.rock],
-  country: 'USA',
-};
+const mockStore = configureStore([]);
 
-const music2: Music = {
-  imgUrl: 'default-cover2.jpg',
-  title: 'Example Album',
-  singerName: 'Example Artist',
-  releaseDate: new Date('2005/05/10'),
-  id: '5678',
-  type: Types.artist,
-  musicGenres: [Genres.rock],
-  country: 'USA',
-};
+describe('CardList', () => {
+  it('renders a list of cards', () => {
+    const musicList = [
+      {
+        imgUrl: 'default-cover1.jpg',
+        title: 'Example Album',
+        singerName: 'Example Artist',
+        releaseDate: new Date('2005/05/10'),
+        id: '1234',
+        type: Types.artist,
+        musicGenres: [Genres.rock],
+        country: 'USA',
+      },
+      {
+        imgUrl: 'default-cover2.jpg',
+        title: 'Example Album',
+        singerName: 'Example Artist',
+        releaseDate: new Date('2005/05/10'),
+        id: '5678',
+        type: Types.artist,
+        musicGenres: [Genres.rock],
+        country: 'USA',
+      },
+    ];
+    const store = mockStore({ music: { musicList } });
 
-const cards = [music1, music2];
+    render(
+      <Provider store={store}>
+        <CardList />
+      </Provider>
+    );
 
-test('CardList component', async () => {
-  render(<CardList cards={cards} />);
-  const list = screen.getByRole('list');
-  const items = screen.getAllByRole('listitem');
+    const cards = screen.getAllByRole('listitem');
+    expect(cards).toHaveLength(2);
+  });
 
-  expect(list).toBeInTheDocument();
-  expect(items).toHaveLength(2);
+  it('does not render anything when there are no cards', () => {
+    const store = mockStore({ music: { musicList: [] } });
+
+    render(
+      <Provider store={store}>
+        <CardList />
+      </Provider>
+    );
+
+    const cards = screen.queryAllByRole('listitem');
+    expect(cards).toHaveLength(0);
+  });
 });
