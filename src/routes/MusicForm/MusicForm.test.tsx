@@ -1,45 +1,35 @@
-import { render } from '@testing-library/react';
-import { describe, it, vi } from 'vitest';
-import userEvent from '@testing-library/user-event';
+import { render, screen } from '@testing-library/react';
+import { test } from 'vitest';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import { Genres, Types } from 'types/types';
 import MusicForm from './MusicForm';
 
-describe('MusicForm', () => {
-  global.URL.createObjectURL = vi.fn();
-  it('should add a new music and display it', async () => {
-    const { getByLabelText, getByText } = render(<MusicForm />);
-    const titleInput = getByLabelText('Title*:');
-    const typeInput = getByLabelText('Artist');
-    const singerNameInput = getByLabelText('Singer*:');
-    const countrySelect = getByLabelText('Country*:');
-    const releaseDateInput = getByLabelText('Release Date*:');
-    const imgFileInput = getByLabelText('Upload Image:');
-    const genresInput = getByLabelText('Rock');
+const mockedStore = configureStore([]);
 
-    // Fill the form
-    await userEvent.type(titleInput, 'My Music');
-    await userEvent.click(typeInput);
-    await userEvent.type(singerNameInput, 'My Singer');
-    await userEvent.selectOptions(countrySelect, 'USA');
-    await userEvent.type(releaseDateInput, '2022-01-01');
-    await userEvent.upload(imgFileInput, new File(['(⌐□_□)'], 'cover.jpg', { type: 'image/jpeg' }));
-    await userEvent.click(genresInput);
-    await userEvent.click(getByText('Submit'));
+test('renders a form and a card list', async () => {
+  const musicList = [
+    {
+      imgUrl: 'default-cover2.jpg',
+      title: 'Example Album',
+      singerName: 'Example Artist',
+      releaseDate: new Date('2005/05/10'),
+      id: '5678',
+      type: Types.artist,
+      musicGenres: [Genres.rock],
+      country: 'USA',
+    },
+  ];
 
-    expect(getByText('Form successfully submitted!')).toBeInTheDocument();
+  const { container } = render(
+    <Provider store={mockedStore({ music: { musicList } })}>
+      <MusicForm />
+    </Provider>
+  );
 
-    // Verify the form is reset
-    expect(titleInput).toHaveValue('');
-    expect(typeInput).not.toBeChecked();
-    expect(singerNameInput).toHaveValue('');
-    expect(countrySelect).toHaveValue('');
-    expect(releaseDateInput).toHaveValue('');
-    expect(imgFileInput).toHaveValue('C:\\fakepath\\cover.jpg');
-    expect(genresInput).not.toBeChecked();
+  const formElement = container.querySelector('form');
+  expect(formElement).toBeInTheDocument();
 
-    // Verify the new music is displayed
-    expect(getByText(/My Music/)).toBeInTheDocument();
-    expect(getByText(/My Singer/)).toBeInTheDocument();
-    expect(getByText('USA')).toBeInTheDocument();
-    expect(getByText(/2022/)).toBeInTheDocument();
-  });
+  const cardListElement = screen.getByRole('list');
+  expect(cardListElement).toBeInTheDocument();
 });

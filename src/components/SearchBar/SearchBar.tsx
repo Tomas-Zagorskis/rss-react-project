@@ -1,38 +1,26 @@
-import { FC, useEffect, useRef, useState } from 'react';
+import { FC, useRef } from 'react';
 
+import { useAppDispatch, useAppSelector } from 'app/hooks';
+import { setSearch } from 'features/search/searchSlice';
 import classes from './SearchBar.module.css';
 
-type Props = {
-  handleSearchValue: (search: string) => void;
-};
-
-const SearchBar: FC<Props> = ({ handleSearchValue }) => {
-  const [search, setSearch] = useState<string>(localStorage.getItem('search')?.trim() || '');
-  const searchRef = useRef<string>(search);
-
-  useEffect(() => {
-    searchRef.current = search;
-  }, [search]);
-
-  useEffect(() => {
-    return () => localStorage.setItem('search', searchRef.current);
-  }, []);
-
-  const updateSearch = (text: string) => {
-    setSearch(text);
-  };
+const SearchBar: FC = () => {
+  const search = useAppSelector((state) => state.search.value);
+  const dispatch = useAppDispatch();
+  const searchRef = useRef<HTMLInputElement>(null);
 
   const handleKeyDown = (code: string) => {
-    if (code === 'Enter' || code === 'NumpadEnter') handleSearchValue(search);
+    if (code === 'Enter' || code === 'NumpadEnter')
+      dispatch(setSearch(searchRef.current?.value.trim() || ''));
   };
 
   return (
     <div className={classes.search}>
       <input
         type="search"
-        onChange={(event) => updateSearch(event.target.value)}
         onKeyDown={(event) => handleKeyDown(event.code)}
-        value={search}
+        ref={searchRef}
+        defaultValue={search}
         placeholder="Search"
       />
       <img src="icon_search.svg" alt="search" />
