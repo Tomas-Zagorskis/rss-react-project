@@ -1,16 +1,16 @@
 import React, { BaseSyntheticEvent, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
+import { Music, Genres } from 'types/types';
+import { useAppDispatch } from 'app/hooks';
 import { CommonInput, RadioInputs, SelectInputs } from 'components/Input/Input';
 import InvalidText from 'components/InvalidText/InvalidText';
-import { Music, Genres } from 'types/types';
 import classes from './Form.module.css';
+import { setMusic } from 'features/music/musicSlice';
+import PopUp from 'components/UI/PopUp/PopUp';
 
-type Props = {
-  onSubmit: (data: Music) => void;
-};
-
-const Form: React.FC<Props> = ({ onSubmit }) => {
+const Form: React.FC = () => {
+  const dispatch = useAppDispatch();
   const {
     register,
     handleSubmit,
@@ -19,12 +19,19 @@ const Form: React.FC<Props> = ({ onSubmit }) => {
   } = useForm<Music>({
     mode: 'onChange',
   });
+  const [success, setSuccess] = useState<boolean>(false);
+
+  if (success) {
+    setTimeout(() => setSuccess(false), 2000);
+  }
+
   const [imgPath, setImgPath] = useState<string>('default-cover.jpg');
 
   const handleForm: SubmitHandler<Music> = (formData) => {
-    onSubmit({ ...formData, imgUrl: imgPath, id: crypto.randomUUID() });
+    dispatch(setMusic({ ...formData, imgUrl: imgPath, id: crypto.randomUUID() }));
     reset();
     setImgPath('default-cover.jpg');
+    setSuccess(true);
   };
 
   const musicGenresList = Object.values(Genres).map((value) => (
@@ -130,6 +137,7 @@ const Form: React.FC<Props> = ({ onSubmit }) => {
         <InvalidText error={!!errors.musicGenres} msg="Genres is required" />
       </div>
       <input type="submit" value="Submit" />
+      <PopUp msg="Form successfully submitted!" display={success} />
     </form>
   );
 };
