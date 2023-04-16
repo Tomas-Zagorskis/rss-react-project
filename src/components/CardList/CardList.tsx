@@ -1,7 +1,7 @@
 import { FC } from 'react';
+import { useAppSelector } from 'app/hooks';
 import CardItem from './CardItem/CardItem';
 import classes from './CardList.module.css';
-import { useAppSelector } from 'app/hooks';
 
 const CardList: FC = () => {
   const cards = useAppSelector((state) => state.music.musicList);

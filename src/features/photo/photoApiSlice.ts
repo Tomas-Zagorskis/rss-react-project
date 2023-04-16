@@ -26,9 +26,8 @@ export const apiSlice = createApi({
         query: (search: string) => {
           if (search === '') {
             return '/photos?page=1';
-          } else {
-            return `/search/photos?query=${search}&page=1`;
           }
+          return `/search/photos?query=${search}&page=1`;
         },
       }),
     };

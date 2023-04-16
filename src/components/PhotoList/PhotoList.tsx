@@ -1,9 +1,9 @@
 import { FC } from 'react';
+import { Basic } from 'unsplash-js/dist/methods/photos/types';
+import { useGetPhotosQuery } from 'features/photo/photoApiSlice';
+import { useAppSelector } from 'app/hooks';
 import PhotoItem from './PhotoItem/PhotoItem';
 import classes from './PhotoList.module.css';
-import { useGetPhotosQuery } from 'features/unsplash/unsplashApi';
-import { Basic } from 'unsplash-js/dist/methods/photos/types';
-import { useAppSelector } from 'app/hooks';
 
 const PhotoList: FC = () => {
   const search = useAppSelector((state) => state.search.value);
@@ -19,7 +19,8 @@ const PhotoList: FC = () => {
   } else {
     photos = data as unknown as Basic[];
   }
-  if (photos.length === 0 && !isFetching) return <h2>No Images Found by search "{search}"...</h2>;
+  if (photos.length === 0 && !isFetching)
+    return <h2>No Images Found by search &quot;{search}&quot;...</h2>;
 
   const itemMap = photos.map((item) => <PhotoItem item={item} key={item.id} />);
 

@@ -1,8 +1,8 @@
 import { FC, useRef } from 'react';
 
-import classes from './SearchBar.module.css';
 import { useAppDispatch, useAppSelector } from 'app/hooks';
 import { setSearch } from 'features/search/searchSlice';
+import classes from './SearchBar.module.css';
 
 const SearchBar: FC = () => {
   const search = useAppSelector((state) => state.search.value);

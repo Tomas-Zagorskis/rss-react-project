@@ -1,13 +1,13 @@
 import React, { BaseSyntheticEvent, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { Music, Genres } from 'types/types';
+import { setMusic } from 'features/music/musicSlice';
 import { useAppDispatch } from 'app/hooks';
+import { Music, Genres } from 'types/types';
 import { CommonInput, RadioInputs, SelectInputs } from 'components/Input/Input';
 import InvalidText from 'components/InvalidText/InvalidText';
-import classes from './Form.module.css';
-import { setMusic } from 'features/music/musicSlice';
 import PopUp from 'components/UI/PopUp/PopUp';
+import classes from './Form.module.css';
 
 const Form: React.FC = () => {
   const dispatch = useAppDispatch();
