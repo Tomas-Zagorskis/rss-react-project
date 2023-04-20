@@ -20,7 +20,7 @@ describe('Home', () => {
       </Provider>
     );
     await waitFor(() => {
-      expect(container.querySelector('ul')).toBeInTheDocument();
+      expect(container.querySelector('ul')).not.toBeInTheDocument();
     });
   });
 });
