@@ -8,9 +8,6 @@ const base = process.env.BASE || '/';
 
 // Cached production assets
 const templateHtml = isProduction ? await fs.readFile('./dist/client/index.html', 'utf-8') : '';
-// const ssrManifest = isProduction
-//   ? await fs.readFile('./dist/client/ssr-manifest.json', 'utf-8')
-//   : undefined;
 
 // Create http server
 const app = express();
@@ -35,7 +32,7 @@ if (!isProduction) {
 // Serve HTML
 app.use('*', async (req, res) => {
   try {
-    const url = req.originalUrl.replace(base, '');
+    const url = req.originalUrl;
 
     let template;
     let render;
@@ -61,13 +58,6 @@ app.use('*', async (req, res) => {
         res.end();
       },
     });
-    // const rendered = await render(url, ssrManifest);
-
-    // const html = template
-    //   .replace(`<!--app-head-->`, rendered.head ?? '')
-    //   .replace(`<!--app-html-->`, rendered.html ?? '');
-
-    res.status(200).set({ 'Content-Type': 'text/html' }).end(html);
   } catch (e) {
     vite?.ssrFixStacktrace(e);
     console.log(e.stack);
