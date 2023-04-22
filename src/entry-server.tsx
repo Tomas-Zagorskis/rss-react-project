@@ -1,9 +1,11 @@
+import Router from 'router';
 import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom/server';
 import { Provider } from 'react-redux';
-import { store } from './app/store';
-import Router from 'router';
 
+import { store } from './app/store';
+
+// eslint-disable-next-line import/prefer-default-export
 export const render = (url: string, options?: object) => {
   return ReactDOMServer.renderToPipeableStream(
     <Provider store={store}>

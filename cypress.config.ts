@@ -14,5 +14,6 @@ export default defineConfig({
       return config;
     },
     baseUrl: 'http://localhost:5173',
+    trashAssetsBeforeRuns: true,
   },
 });

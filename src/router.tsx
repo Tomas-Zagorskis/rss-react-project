@@ -1,10 +1,10 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import AboutUs from './routes/AboutUs/AboutUs';
-import NotFound from './routes/NotFound/NotFound';
-import Home from './routes/Home/Home';
-import MusicForm from './routes/MusicForm/MusicForm';
 import Header from 'components/Header/Header';
+import Home from './routes/Home/Home';
+import AboutUs from './routes/AboutUs/AboutUs';
+import MusicForm from './routes/MusicForm/MusicForm';
+import NotFound from './routes/NotFound/NotFound';
 
 const Router = () => {
   return (
