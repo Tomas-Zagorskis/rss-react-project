@@ -36,15 +36,10 @@ app.use('*', async (req, res) => {
     const url = req.originalUrl;
 
     let template: string;
-    let render: (
-      arg0: string,
-      arg1: { onShellReady(): void; onShellError(error: any): void; onAllReady(): void }
-    ) => PromiseLike<{ pipe: any }> | { pipe: any };
-
     // Always read fresh template in development
     template = await fs.readFile('./index.html', 'utf-8');
     template = await vite.transformIndexHtml(url, template);
-    render = (await vite.ssrLoadModule('/src/entry-server.tsx')).render;
+    const { render } = await vite.ssrLoadModule('/src/entry-server.tsx');
 
     const html = template.split(`<!--app-html-->`);
 
@@ -54,7 +49,7 @@ app.use('*', async (req, res) => {
         res.write(html[0]);
         pipe(res);
       },
-      onShellError(_) {
+      onShellError() {
         res.statusCode = 500;
         res.setHeader('content-type', 'text/html');
         res.send('<h1>Something went wrong</h1>');
