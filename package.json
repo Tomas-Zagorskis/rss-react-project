@@ -19,7 +19,9 @@
     "preview": "cross-env NODE_ENV=production node server",
     "lint": "npx eslint src",
     "format": "prettier --write .",
-    "cyp": "cypress open",
+    "cyp": "cypress run --e2e && npm run cyp:coverage",
+    "cyp:coverage": "npx nyc report && npx nyc report --reporter=text-summary",
+    "cyp:open": "cypress open",
     "test": "vitest",
     "coverage": "vitest run --coverage"
   },
