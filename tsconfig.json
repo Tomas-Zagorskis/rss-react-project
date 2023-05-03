@@ -14,6 +14,7 @@
     "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
     "moduleResolution": "Node",
+    "types": ["cypress", "cypress-file-upload"],
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
@@ -23,5 +24,6 @@
     }
   },
   "include": ["./src/**/*", "vite.config.ts", ".eslintrc.json"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "ts-node": { "esm": true, "experimentalSpecifierResolution": "node" }
 }
